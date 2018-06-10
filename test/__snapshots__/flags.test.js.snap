@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`flags apply defaults 1`] = `
+Object {
+  "devMiddleware": Object {},
+  "hotClient": Object {},
+}
+`;
+
+exports[`flags apply devWare 1`] = `
+Object {
+  "devMiddleware": Object {
+    "publicPath": "/static",
+  },
+  "hotClient": Object {},
+}
+`;
+
+exports[`flags apply hotClient 1`] = `
+Object {
+  "devMiddleware": Object {},
+  "hotClient": Object {
+    "hmr": false,
+    "reload": false,
+  },
+}
+`;
+
+exports[`flags apply hotClient false 1`] = `
+Object {
+  "devMiddleware": Object {},
+  "hotClient": Object {
+    "hmr": false,
+  },
+}
+`;
+
+exports[`flags apply https cert/key 1`] = `
+Object {
+  "devMiddleware": Object {},
+  "hotClient": Object {},
+  "https": Object {
+    "cert": "<PROJECT_ROOT>/fixtures/test-cert.pem",
+    "key": "<PROJECT_ROOT>/fixtures/test-key.pem",
+  },
+}
+`;
+
+exports[`flags apply https pass/pfx 1`] = `
+Object {
+  "devMiddleware": Object {},
+  "hotClient": Object {},
+  "https": Object {
+    "passphrase": "sample",
+    "pfx": "<PROJECT_ROOT>/fixtures/test-cert.pfx",
+  },
+}
+`;
+
+exports[`flags apply logLevel 1`] = `
+Object {
+  "devMiddleware": Object {
+    "logLevel": "silent",
+  },
+  "hotClient": Object {
+    "logLevel": "silent",
+  },
+  "logLevel": "silent",
+}
+`;
+
+exports[`flags apply logTime 1`] = `
+Object {
+  "devMiddleware": Object {
+    "logTime": true,
+  },
+  "hotClient": Object {
+    "logTime": true,
+  },
+  "logTime": true,
+}
+`;
+
+exports[`flags apply open 1`] = `
+Object {
+  "devMiddleware": Object {},
+  "hotClient": Object {},
+  "open": Object {
+    "app": "app",
+    "path": "path",
+  },
+}
+`;
+
+exports[`flags apply open boolean 1`] = `
+Object {
+  "devMiddleware": Object {},
+  "hotClient": Object {},
+  "open": Object {
+    "": true,
+    "path": "/",
+  },
+}
+`;
