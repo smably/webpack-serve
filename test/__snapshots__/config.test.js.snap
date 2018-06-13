@@ -582,6 +582,21 @@ Array [
 ]
 `;
 
+exports[`config load: not found 1`] = `
+Array [
+  Object {
+    "entry": Array [
+      "./src",
+    ],
+    "plugins": Array [
+      TimeFixPlugin {
+        "watchOffset": 11000,
+      },
+    ],
+  },
+]
+`;
+
 exports[`config load: relative path 1`] = `
 Array [
   Object {

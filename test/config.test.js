@@ -97,4 +97,11 @@ describe('config', () => {
       expect(configs).toMatchSnapshot();
     });
   });
+
+  test('load: not found', () => {
+    const argv = {};
+    return load(argv, {}).then((configs) => {
+      expect(configs).toMatchSnapshot();
+    });
+  });
 });

@@ -23,16 +23,21 @@ describe('flags', () => {
     expect(apply(argv)).toMatchSnapshot();
   });
 
+  test('apply hmr false', () => {
+    const argv = { hmr: false };
+    expect(apply(argv)).toMatchSnapshot();
+  });
+
   test('apply https cert/key', () => {
-    const httpsCert = resolve(__dirname, '../fixtures/test-cert.pem');
-    const httpsKey = resolve(__dirname, '../fixtures/test-key.pem');
+    const httpsCert = resolve(__dirname, './fixtures/test-cert.pem');
+    const httpsKey = resolve(__dirname, './fixtures/test-key.pem');
     const argv = { httpsCert, httpsKey };
     expect(apply(argv)).toMatchSnapshot();
   });
 
   test('apply https pass/pfx', () => {
     const httpsPass = 'sample';
-    const httpsPfx = resolve(__dirname, '../fixtures/test-cert.pfx');
+    const httpsPfx = resolve(__dirname, './fixtures/test-cert.pfx');
     const argv = { httpsPass, httpsPfx };
     expect(apply(argv)).toMatchSnapshot();
   });
@@ -54,6 +59,11 @@ describe('flags', () => {
 
   test('apply open boolean', () => {
     const argv = { open: true };
+    expect(apply(argv)).toMatchSnapshot();
+  });
+
+  test('apply reload false', () => {
+    const argv = { reload: false };
     expect(apply(argv)).toMatchSnapshot();
   });
 });

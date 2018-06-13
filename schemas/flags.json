@@ -54,13 +54,13 @@
     "desc": "Instruct the server to completely disable automatic HMR functionality",
     "type": "boolean"
   },
-  "no-hmr": {
-    "desc": "Instruct the client not to apply Hot Module Replacement patches",
+  "hmr": {
+    "desc": "Specify whether or not the client should apply Hot Module Replacement patches",
     "type": "boolean"
   },
-  "no-reload": {
-    "desc": "Instruct middleware not to reload the page for build errors",
-    "type": "string"
+  "reload": {
+    "desc": "Specify whether or not the middleware should reload the page for build errors",
+    "type": "boolean"
   },
   "open": {
     "desc": "Instruct the app to open in the default browser",
