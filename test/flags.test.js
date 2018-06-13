@@ -66,4 +66,24 @@ describe('flags', () => {
     const argv = { reload: false };
     expect(apply(argv)).toMatchSnapshot();
   });
+
+  test('compound logTime/logLevel', () => {
+    const argv = { logLevel: 'warn', logTime: true };
+    expect(apply(argv)).toMatchSnapshot();
+  });
+
+  test('compound devMiddleware value', () => {
+    const argv = { devWare: { batman: 'robin' }, logTime: true };
+    expect(apply(argv)).toMatchSnapshot();
+  });
+
+  test('compound hotClient value', () => {
+    const argv = { hotClient: { hmr: false }, logTime: true };
+    expect(apply(argv)).toMatchSnapshot();
+  });
+
+  test('compound hotClient: false value', () => {
+    const argv = { hotClient: false, logTime: true };
+    expect(apply(argv)).toMatchSnapshot();
+  });
 });

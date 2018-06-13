@@ -102,3 +102,57 @@ Object {
   },
 }
 `;
+
+exports[`flags compound devMiddleware value 1`] = `
+Object {
+  "devMiddleware": Object {
+    "batman": "robin",
+    "logTime": true,
+  },
+  "hotClient": Object {
+    "logTime": true,
+  },
+  "logTime": true,
+}
+`;
+
+exports[`flags compound hotClient value 1`] = `
+Object {
+  "devMiddleware": Object {
+    "logTime": true,
+  },
+  "hotClient": Object {
+    "hmr": false,
+    "logTime": true,
+  },
+  "logTime": true,
+}
+`;
+
+exports[`flags compound hotClient: false value 1`] = `
+Object {
+  "devMiddleware": Object {
+    "logTime": true,
+  },
+  "hotClient": Object {
+    "hmr": false,
+    "logTime": true,
+  },
+  "logTime": true,
+}
+`;
+
+exports[`flags compound logTime/logLevel 1`] = `
+Object {
+  "devMiddleware": Object {
+    "logLevel": "warn",
+    "logTime": true,
+  },
+  "hotClient": Object {
+    "logLevel": "warn",
+    "logTime": true,
+  },
+  "logLevel": "warn",
+  "logTime": true,
+}
+`;
