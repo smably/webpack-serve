@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`app getApp + getOptions 1`] = `
+Array [
+  Object {
+    "context": "<PROJECT_ROOT>/test/fixtures/basic",
+    "devtool": "source-map",
+    "entry": Array [
+      "./app.js",
+    ],
+    "output": Object {
+      "filename": "./output.js",
+      "path": "<PROJECT_ROOT>/test/fixtures/basic",
+    },
+    "plugins": Array [
+      TimeFixPlugin {
+        "watchOffset": 11000,
+      },
+      NamedModulesPlugin {
+        "options": Object {},
+      },
+    ],
+    "serve": Object {},
+  },
+]
+`;
+
+exports[`app getApp + getOptions 2`] = `
+Object {
+  "clipboard": true,
+  "compiler": null,
+  "content": Array [
+    "<PROJECT_ROOT>/test/fixtures/basic",
+    "<PROJECT_ROOT>",
+  ],
+  "devMiddleware": Object {
+    "logLevel": "silent",
+    "publicPath": "/",
+  },
+  "host": "localhost",
+  "hotClient": Object {
+    "host": "localhost",
+    "logLevel": "silent",
+  },
+  "http2": false,
+  "https": null,
+  "logLevel": "silent",
+  "logTime": false,
+  "open": false,
+  "port": 8080,
+  "protocol": "http",
+}
+`;
+
+exports[`app getApp + getOptions 3`] = `
+"Server {
+  _events: 
+   { request: [Function: handleRequest],
+     connection: [ [Function: connectionListener], [Function] ] },
+  _eventsCount: 2,
+  _maxListeners: undefined,
+  _connections: 0,
+  _handle: 
+   TCP {
+     reading: false,
+     owner: [Circular],
+     onread: null,
+     onconnection: [Function: onconnection] },
+  _usingWorkers: false,
+  _workers: [],
+  _unref: false,
+  allowHalfOpen: true,
+  pauseOnConnect: false,
+  httpAllowHalfOpen: false,
+  timeout: 120000,
+  keepAliveTimeout: 5000,
+  _pendingResponseData: 0,
+  maxHeadersCount: null,
+  kill: [Function],
+  _connectionKey: '4:127.0.0.1:8080',
+  [Symbol(IncomingMessage)]: 
+   { [Function: IncomingMessage]
+     super_: 
+      { [Function: Readable]
+        ReadableState: [Function: ReadableState],
+        super_: [Function],
+        _fromList: [Function: fromList] } },
+  [Symbol(ServerResponse)]: { [Function: ServerResponse] super_: { [Function: OutgoingMessage] super_: [Function] } },
+  <ASYNC_ID> }"
+`;
+
+exports[`app getApp 1`] = `
+Object {
+  "env": "test",
+  "proxy": false,
+  "subdomainOffset": 2,
+}
+`;
+
+exports[`app getApp 2`] = `
+"Server {
+  _events: 
+   { request: [Function: handleRequest],
+     connection: [ [Function: connectionListener], [Function] ] },
+  _eventsCount: 2,
+  _maxListeners: undefined,
+  _connections: 0,
+  _handle: 
+   TCP {
+     reading: false,
+     owner: [Circular],
+     onread: null,
+     onconnection: [Function: onconnection] },
+  _usingWorkers: false,
+  _workers: [],
+  _unref: false,
+  allowHalfOpen: true,
+  pauseOnConnect: false,
+  httpAllowHalfOpen: false,
+  timeout: 120000,
+  keepAliveTimeout: 5000,
+  _pendingResponseData: 0,
+  maxHeadersCount: null,
+  kill: [Function],
+  _connectionKey: '4:127.0.0.1:0',
+  [Symbol(IncomingMessage)]: 
+   { [Function: IncomingMessage]
+     super_: 
+      { [Function: Readable]
+        ReadableState: [Function: ReadableState],
+        super_: [Function],
+        _fromList: [Function: fromList] } },
+  [Symbol(ServerResponse)]: { [Function: ServerResponse] super_: { [Function: OutgoingMessage] super_: [Function] } },
+  <ASYNC_ID> }"
+`;

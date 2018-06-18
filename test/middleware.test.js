@@ -63,8 +63,8 @@ describe('middleware', () => {
     const config = require('./fixtures/basic/webpack.config');
     const compiler = webpack(config);
     const logLevel = 'silent';
-    const devWare = { publicPath: '/', logLevel };
-    const options = { compiler, devWare, hotClient: { logLevel } };
+    const devMiddleware = { publicPath: '/', logLevel };
+    const options = { compiler, devMiddleware, hotClient: { logLevel } };
     const ware = new WebpackMiddleware(app, options);
 
     return ware.call().then((koaWebpack) => {
@@ -88,10 +88,10 @@ describe('middleware', () => {
     const config = require('./fixtures/basic/webpack.config');
     const compiler = webpack(config);
     const logLevel = 'silent';
-    const devWare = { publicPath: '/', logLevel };
+    const devMiddleware = { publicPath: '/', logLevel };
     const options = {
       compiler,
-      devWare,
+      devMiddleware,
       hotClient: { logLevel, port: 'fail' },
     };
     const ware = new WebpackMiddleware(app, options);
