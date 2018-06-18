@@ -53,11 +53,7 @@ describe('middleware', () => {
     const app = {
       used: [],
       use(what) {
-        const value = inspect(what).replace(
-          /startTime: \d+/g,
-          'startTime: <START_TIME>'
-        );
-        app.used.push(value);
+        app.used.push(what);
       },
     };
     const config = require('./fixtures/basic/webpack.config');
@@ -68,7 +64,10 @@ describe('middleware', () => {
     const ware = new WebpackMiddleware(app, options);
 
     return ware.call().then((koaWebpack) => {
-      expect(app.used).toMatchSnapshot();
+      expect(app.used).toHaveLength(1);
+      expect(app.used[0]).toBeDefined();
+      expect(app.used[0].hotClient).toBeDefined();
+      expect(app.used[0].devMiddleware).toBeDefined();
       expect(koaWebpack).toBeDefined();
       const value = inspect(koaWebpack).replace(/port: \d+/g, 'port: <PORT>');
       expect(value).toMatchSnapshot();
