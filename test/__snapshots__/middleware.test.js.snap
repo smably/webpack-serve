@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`middleware ContentMiddleware 1`] = `
+Array [
+  "[Function: serve]",
+  "[Function: serve]",
+]
+`;
+
+exports[`middleware WebpackMiddleware 1`] = `
+Array [
+  "{ [Function: middleware]
+  close: [Function: close],
+  context: 
+   { state: false,
+     webpackStats: null,
+     callbacks: [],
+     options: 
+      { logLevel: 'silent',
+        logTime: false,
+        logger: null,
+        mimeTypes: null,
+        reporter: [Function: reporter],
+        stats: [Object],
+        watchOptions: [Object],
+        writeToDisk: false,
+        publicPath: '/' },
+     compiler: 
+      Compiler {
+        _pluginCompat: [SyncBailHook],
+        hooks: [Object],
+        name: undefined,
+        parentCompilation: undefined,
+        outputPath: '<PROJECT_ROOT>/test/fixtures/basic',
+        outputFileSystem: [MemoryFileSystem],
+        inputFileSystem: [CachedInputFileSystem],
+        recordsInputPath: undefined,
+        recordsOutputPath: undefined,
+        records: {},
+        fileTimestamps: Map {},
+        contextTimestamps: Map {},
+        resolverFactory: [ResolverFactory],
+        resolvers: [Object],
+        options: [Object],
+        context: '<PROJECT_ROOT>/test/fixtures/basic',
+        requestShortener: [RequestShortener],
+        running: true,
+        watchFileSystem: [NodeWatchFileSystem],
+        dependencies: undefined,
+        hotClient: [Object] },
+     watching: 
+      Watching {
+        startTime: <START_TIME>,
+        invalid: false,
+        handler: [Function],
+        callbacks: [],
+        closed: false,
+        watchOptions: [Object],
+        compiler: [Compiler],
+        running: true },
+     forceRebuild: false,
+     log: 
+      LogLevel {
+        type: 'LogLevel',
+        options: [Object],
+        methodFactory: [PrefixFactory],
+        name: 'wdm',
+        currentLevel: 5,
+        trace: [Function: noop],
+        debug: [Function: noop],
+        info: [Function: noop],
+        warn: [Function: noop],
+        error: [Function: noop],
+        log: [Function: noop] },
+     rebuild: [Function: rebuild],
+     fs: MemoryFileSystem { data: {} } },
+  fileSystem: MemoryFileSystem { data: {} },
+  getFilenameFromUrl: [Function: bound getFilenameFromUrl],
+  invalidate: [Function: invalidate],
+  waitUntilValid: [Function: waitUntilValid] }",
+]
+`;
+
+exports[`middleware WebpackMiddleware 2`] = `
+"{ [Function]
+  hotClient: 
+   { close: [Function: close],
+     options: 
+      { allEntries: false,
+        autoConfigure: true,
+        host: [Object],
+        hmr: true,
+        https: false,
+        logLevel: 'silent',
+        logTime: false,
+        port: <PORT>,
+        reload: true,
+        send: [Object],
+        server: null,
+        stats: [Object],
+        validTargets: [Array],
+        test: false,
+        log: [LogLevel],
+        webSocket: [Object] },
+     server: 
+      WebSocketServer {
+        _events: [Object],
+        _eventsCount: 3,
+        _maxListeners: undefined,
+        _server: [Server],
+        _removeListeners: [Function: removeListeners],
+        clients: Set {},
+        options: [Object],
+        broadcast: [Function: broadcast],
+        close: [Function: close],
+        send: [Function: bound sendData],
+        host: '127.0.0.1',
+        port: <PORT> } },
+  devMiddleware: 
+   { [Function: middleware]
+     close: [Function: close],
+     context: 
+      { state: false,
+        webpackStats: null,
+        callbacks: [],
+        options: [Object],
+        compiler: [Compiler],
+        watching: [Watching],
+        forceRebuild: false,
+        log: [LogLevel],
+        rebuild: [Function: rebuild],
+        fs: [MemoryFileSystem] },
+     fileSystem: MemoryFileSystem { data: {} },
+     getFilenameFromUrl: [Function: bound getFilenameFromUrl],
+     invalidate: [Function: invalidate],
+     waitUntilValid: [Function: waitUntilValid] },
+  close: [Function: close] }"
+`;
+
+exports[`middleware WebpackMiddleware Error 1`] = `
+[ValidationError: webpack-hot-client
+
+  [4mOptions Validation Error[24m
+
+  [2moptions[22m.port  [34mshould be integer[39m
+]
+`;
+
+exports[`middleware WebpackMiddleware Error 2`] = `
+[Error: An error was thrown while initializing koa-webpack
+ webpack-hot-client
+
+  [4mOptions Validation Error[24m
+
+  [2moptions[22m.port  [34mshould be integer[39m
+
+
+  [2moptions[22m.port  [34mshould be integer[39m]
+`;

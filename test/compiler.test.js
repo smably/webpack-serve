@@ -3,8 +3,6 @@ const webpack = require('webpack');
 const eventbus = require('../lib/bus');
 const { getCompiler } = require('../lib/compiler');
 
-/* eslint-disable global-require, import/no-dynamic-require */
-
 const bus = eventbus({});
 const compile = (compiler) => new Promise((resolve) => compiler.run(resolve));
 const getConfig = (name) => require(`./fixtures/${name}/webpack.config`);
