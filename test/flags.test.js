@@ -62,6 +62,16 @@ describe('flags', () => {
     expect(apply(argv)).toMatchSnapshot();
   });
 
+  test('apply port string', () => {
+    const argv = { port: '8888' };
+    expect(apply(argv)).toMatchSnapshot();
+  });
+
+  test('apply port number', () => {
+    const argv = { port: 8888 };
+    expect(apply(argv)).toMatchSnapshot();
+  });
+
   test('apply reload false', () => {
     const argv = { reload: false };
     expect(apply(argv)).toMatchSnapshot();

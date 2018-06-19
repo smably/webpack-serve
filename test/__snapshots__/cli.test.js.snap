@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cli bad config 1`] = `
+"Command failed: <PROJECT_ROOT>/lib/cli.js ./test/fixtures/invalid.config.js
+
+ValidationError: config-loader
+
+  Options Validation Error
+
+  options['foo']  is an invalid additional property"
+`;
+
+exports[`cli config throwing error 1`] = `
+"Command failed: <PROJECT_ROOT>/lib/cli.js ./test/fixtures/error.config.js
+<PROJECT_ROOT>/test/fixtures/error.config.js:3
+  throw new Error('batman');
+  ^
+
+Error: batman"
+`;

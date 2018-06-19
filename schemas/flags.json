@@ -76,7 +76,7 @@
   },
   "port": {
     "desc": "The port the app should listen on. Default: 8080",
-    "type": "string"
+    "type": ["number", "string"]
   },
   "require": {
     "alias": "r",

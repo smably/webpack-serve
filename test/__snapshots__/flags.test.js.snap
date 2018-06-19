@@ -95,6 +95,18 @@ Object {
 }
 `;
 
+exports[`flags apply port number 1`] = `
+Object {
+  "port": 8888,
+}
+`;
+
+exports[`flags apply port string 1`] = `
+Object {
+  "port": "8888",
+}
+`;
+
 exports[`flags apply reload false 1`] = `
 Object {
   "hotClient": Object {

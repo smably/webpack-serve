@@ -1,9 +1,0 @@
-structure:
-
-- app       : exports fn returning koa instance
-- cli       : cli bin
-- config    : exports load fn
-- flags     : exports fn returning options from flags
-- index     : entry point
-- options   : exports fn returning transformed options
-- aerver    : exports fn returning http.Server instnace

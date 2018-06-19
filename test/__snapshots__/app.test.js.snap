@@ -77,7 +77,7 @@ exports[`app getApp + getOptions 3`] = `
   _pendingResponseData: 0,
   maxHeadersCount: null,
   kill: [Function],
-  _connectionKey: '4:127.0.0.1:8080',
+  _connectionKey: '<IFACE_KEY>',
   [Symbol(IncomingMessage)]: 
    { [Function: IncomingMessage]
      super_: 

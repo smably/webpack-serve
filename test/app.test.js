@@ -64,10 +64,9 @@ describe('app', () => {
       const app = getApp(options);
 
       return app.start().then((server) => {
-        const snap = inspect(server).replace(
-          /\[Symbol\(asyncId\)\]: \d+/,
-          '<ASYNC_ID>'
-        );
+        const snap = inspect(server)
+          .replace(/\[Symbol\(asyncId\)\]: \d+/, '<ASYNC_ID>')
+          .replace(/\d+:\d+\.\d+\.\d+\.\d+:\d+/, '<IFACE_KEY>');
         expect(snap).toMatchSnapshot();
         return new Promise((resolve) => {
           setTimeout(() => app.stop(resolve), 500);
