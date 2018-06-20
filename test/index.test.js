@@ -1,3 +1,6 @@
+const { readFileSync: read } = require('fs');
+const path = require('path');
+
 const request = require('supertest');
 
 const serve = require('../lib/index');
@@ -16,7 +19,7 @@ describe('serve', () => {
     });
   });
 
-  test('serve basic config', () => {
+  test('basic config', () => {
     const argv = { logLevel: 'silent' };
     const opts = { config: require('./fixtures/basic/webpack.config') };
     return serve(argv, opts).then(({ app, on, options }) => {
@@ -39,7 +42,7 @@ describe('serve', () => {
     });
   });
 
-  test('serve config + add', () => {
+  test('config + add', () => {
     const argv = { logLevel: 'silent' };
     const opts = {
       add(app, middleware) {
@@ -61,7 +64,27 @@ describe('serve', () => {
     });
   });
 
-  test('serve multi config', () => {
+  test('https', () => {
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+    const argv = { logLevel: 'silent' };
+    const cert = read(path.resolve(__dirname, './fixtures/test-cert.pem'));
+    const key = read(path.resolve(__dirname, './fixtures/test-key.pem'));
+    const opts = {
+      config: require('./fixtures/multi/webpack.config'),
+      https: { cert, key },
+    };
+    return serve(argv, opts).then(({ app }) => {
+      const { port } = app.server.address();
+      const req = request(`https://localhost:${port}`);
+      return Promise.all([
+        req.get('/static/client.js').expect(200),
+        req.get('/server/server.js').expect(200),
+      ]).then(() => new Promise((resolve) => app.stop(resolve)));
+    });
+  });
+
+  test('multi config', () => {
     const argv = { logLevel: 'silent' };
     const opts = { config: require('./fixtures/multi/webpack.config') };
     return serve(argv, opts).then(({ app }) => {
@@ -73,7 +96,7 @@ describe('serve', () => {
     });
   });
 
-  test('serve multi-named config', () => {
+  test('multi-named config', () => {
     const argv = { logLevel: 'silent' };
     const opts = { config: require('./fixtures/multi-named/webpack.config') };
     return serve(argv, opts).then(({ app }) => {
@@ -85,7 +108,7 @@ describe('serve', () => {
     });
   });
 
-  test('serve webpack 4 defaults config', () => {
+  test('webpack 4 defaults config', () => {
     const argv = { logLevel: 'silent' };
     const opts = {
       config: require('./fixtures/webpack-4-defaults/webpack.config'),
