@@ -30,6 +30,22 @@ const run = (flags) => {
 };
 
 describe('cli', () => {
+  test('--help', () => {
+    const proc = run(['--help']);
+
+    return proc.then(({ stdout }) => {
+      expect(stdout).toMatchSnapshot();
+    });
+  });
+
+  test('--version', () => {
+    const proc = run(['--version']);
+
+    return proc.then(({ stdout }) => {
+      expect(stdout).toMatch(/\d+\.\d+\.\d+/);
+    });
+  });
+
   test('[config]', () => {
     const config = './test/fixtures/basic/webpack.config.js';
     const proc = run([config]);
