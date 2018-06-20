@@ -3,11 +3,7 @@ const weblog = require('webpack-log');
 const eventbus = require('../lib/bus');
 
 describe('bus', () => {
-  weblog({
-    id: 'webpack-serve',
-    level: 'silent',
-    name: 'serve',
-  });
+  weblog({ id: 'webpack-serve', level: 'silent', name: 'serve' });
 
   test('should subscribe to events in options', async () =>
     new Promise((resolve) => {

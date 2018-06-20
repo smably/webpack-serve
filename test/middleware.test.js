@@ -1,12 +1,15 @@
 const { inspect } = require('util');
 
 const webpack = require('webpack');
+const weblog = require('webpack-log');
 
 const ContentMiddleware = require('../lib/middleware/ContentMiddleware');
 const MiddlewareState = require('../lib/middleware/MiddlewareState');
 const WebpackMiddleware = require('../lib/middleware/WebpackMiddleware');
 
 describe('middleware', () => {
+  weblog({ id: 'webpack-serve', level: 'silent', name: 'serve' });
+
   test('MiddlewareState', () => {
     const ware = new MiddlewareState();
     expect(ware.state).toBeDefined();
