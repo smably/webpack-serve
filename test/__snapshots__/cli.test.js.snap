@@ -33,6 +33,9 @@ exports[`cli --help 1`] = `
     --require     Preload one or more modules before loading the webpack configuration
     --version     Display the webpack-command version
 
+  Note: Any boolean flag can be prefixed with 'no-' instead of
+  specifying a value. e.g. --no-reload rather than --reload=false
+
   Examples
     $ webpack-serve ./webpack.config.js --no-reload
     $ webpack-serve --config ./webpack.config.js --port 1337
