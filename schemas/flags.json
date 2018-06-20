@@ -20,7 +20,7 @@
   },
   "hot-client": {
     "desc": "Set options for webpack-hot-client. e.g. --hot-client.host localhost",
-    "type": "object"
+    "type": ["boolean", "object"]
   },
   "http2": {
     "desc": "Instruct the server to use HTTP2",
@@ -48,10 +48,6 @@
   },
   "log-time": {
     "desc": "Instruct the logger for webpack-serve and dependencies to display a timestamp",
-    "type": "boolean"
-  },
-  "no-hot-client": {
-    "desc": "Instruct the server to completely disable automatic HMR functionality",
     "type": "boolean"
   },
   "hmr": {
