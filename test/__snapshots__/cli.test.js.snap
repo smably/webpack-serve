@@ -8,8 +8,9 @@ exports[`cli --help 1`] = `
     $ webpack-serve <config> [...options]
 
   Options
+    --clipboard      Specify whether or not the server should copy the server URI to the clipboard (default: true)
     --config         The webpack config to serve. Alias for <config>
-    --content        The path from which static content will be served
+    --content        The path from which static content will be served (default: process.cwd)
     --dev-ware       Set options for webpack-dev-middleware. e.g. --dev.publicPath /
     --help           Show usage information and the options listed here.
     --host           The host the app should bind to
@@ -23,8 +24,8 @@ exports[`cli --help 1`] = `
     --log-level      Limit all process console messages to a specific level and above
                      Levels: trace, debug, info, warn, error, silent
     --log-time       Instruct the logger for webpack-serve and dependencies to display a timestamp
-    --hmr            Specify whether or not the client should apply Hot Module Replacement patches
-    --reload         Specify whether or not the middleware should reload the page for build errors
+    --hmr            Specify whether or not the client should apply Hot Module Replacement patches (default: true)
+    --reload         Specify whether or not the middleware should reload the page for build errors (default: true)
     --open           Instruct the app to open in the default browser
     --open-app       The name of the app to open the app within, or an array
                      containing the app name and arguments for the app
@@ -33,8 +34,8 @@ exports[`cli --help 1`] = `
     --require, -r    Preload one or more modules before loading the webpack configuration
     --version        Display the webpack-command version
 
-  Note: Any boolean flag can be prefixed with 'no-' instead of
-  specifying a value. e.g. --no-reload rather than --reload=false
+  Note: Any boolean flag can be prefixed with 'no-' instead of specifying a value.
+  e.g. --no-reload rather than --reload=false
 
   Examples
     $ webpack-serve ./webpack.config.js --no-reload

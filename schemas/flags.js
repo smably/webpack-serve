@@ -1,12 +1,16 @@
 const chalk = require('chalk');
 
 module.exports = {
+  clipboard: {
+    desc: chalk`Specify whether or not the server should copy the server URI to the clipboard {dim (default: true)}`,
+    type: 'boolean',
+  },
   config: {
     desc: 'The webpack config to serve. Alias for <config>',
     type: 'string',
   },
   content: {
-    desc: 'The path from which static content will be served',
+    desc: chalk`The path from which static content will be served {dim (default: process.cwd)}`,
     type: 'string',
   },
   'dev-ware': {
@@ -59,13 +63,11 @@ Use {dim --no-hot-client} to disable webpack-hot-client`,
     type: 'boolean',
   },
   hmr: {
-    desc:
-      'Specify whether or not the client should apply Hot Module Replacement patches',
+    desc: chalk`Specify whether or not the client should apply Hot Module Replacement patches {dim (default: true)}`,
     type: 'boolean',
   },
   reload: {
-    desc:
-      'Specify whether or not the middleware should reload the page for build errors',
+    desc: chalk`Specify whether or not the middleware should reload the page for build errors {dim (default: true)}`,
     type: 'boolean',
   },
   open: {
