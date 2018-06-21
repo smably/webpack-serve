@@ -50,10 +50,10 @@ describe('cli', () => {
 
   test('[config]', () => {
     const config = './test/fixtures/basic/webpack.config.js';
-    const proc = run([config]);
+    const proc = run([config, '--port', '9090']);
 
     return proc.ready.then(() =>
-      request('http://localhost:8080')
+      request('http://localhost:9090')
         .get('/output.js')
         .expect(200)
         .then(() => proc.kill('SIGINT'))
