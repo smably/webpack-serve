@@ -71,13 +71,11 @@ describe('compiler', () => {
 
     return Promise.all([
       compile(result),
-      waitForEvent('compiler-error').then((data) =>
-        expect(data.json).toMatchSnapshot({
-          builtAt: /\d+/,
-          time: /\d+/,
-          version: /\d+\.\d+\.\d+/,
-        })
-      ),
+      waitForEvent('compiler-error').then((data) => {
+        const { errors } = data.json;
+        expect(errors.length).toBeGreaterThan(0);
+        expect(errors[0]).toMatch(/Module not found/);
+      }),
       waitForEvent('build-finished'),
     ]);
   });
