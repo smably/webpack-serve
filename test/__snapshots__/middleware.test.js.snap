@@ -8,78 +8,32 @@ Array [
 `;
 
 exports[`middleware WebpackMiddleware 1`] = `
-"{ [Function]
-  hotClient: 
-   { close: [Function: close],
-     options: 
-      { allEntries: false,
-        autoConfigure: true,
-        host: [Object],
-        hmr: true,
-        https: false,
-        logLevel: 'silent',
-        logTime: false,
-        port: <PORT>,
-        reload: true,
-        send: [Object],
-        server: null,
-        stats: [Object],
-        validTargets: [Array],
-        test: false,
-        log: [LogLevel],
-        webSocket: [Object] },
-     server: 
-      WebSocketServer {
-        _events: [Object],
-        _eventsCount: 3,
-        _maxListeners: undefined,
-        _server: [Server],
-        _removeListeners: [Function: removeListeners],
-        clients: Set {},
-        options: [Object],
-        broadcast: [Function: broadcast],
-        close: [Function: close],
-        send: [Function: bound sendData],
-        host: '127.0.0.1',
-        port: <PORT> } },
-  devMiddleware: 
-   { [Function: middleware]
-     close: [Function: close],
-     context: 
-      { state: false,
-        webpackStats: null,
-        callbacks: [],
-        options: [Object],
-        compiler: [Compiler],
-        watching: [Watching],
-        forceRebuild: false,
-        log: [LogLevel],
-        rebuild: [Function: rebuild],
-        fs: [MemoryFileSystem] },
-     fileSystem: MemoryFileSystem { data: {} },
-     getFilenameFromUrl: [Function: bound getFilenameFromUrl],
-     invalidate: [Function: invalidate],
-     waitUntilValid: [Function: waitUntilValid] },
-  close: [Function: close] }"
-`;
-
-exports[`middleware WebpackMiddleware Error 1`] = `
-[ValidationError: webpack-hot-client
-
-  [4mOptions Validation Error[24m
-
-  [2moptions[22m.port  [34mshould be integer[39m
+Array [
+  "hotClient",
+  "devMiddleware",
+  "close",
 ]
 `;
 
+exports[`middleware WebpackMiddleware Error 1`] = `
+"webpack-hot-client
+
+  Options Validation Error
+
+  options.port  should be integer
+
+
+  options.port  should be integer"
+`;
+
 exports[`middleware WebpackMiddleware Error 2`] = `
-[Error: An error was thrown while initializing koa-webpack
+"Error: An error was thrown while initializing koa-webpack
  webpack-hot-client
 
-  [4mOptions Validation Error[24m
+  Options Validation Error
 
-  [2moptions[22m.port  [34mshould be integer[39m
+  options.port  should be integer
 
 
-  [2moptions[22m.port  [34mshould be integer[39m]
+  options.port  should be integer"
 `;

@@ -1,4 +1,5 @@
-const { inspect } = require('util');
+const http = require('http');
+const net = require('net');
 
 const weblog = require('webpack-log');
 
@@ -35,11 +36,9 @@ describe('app', () => {
     expect(app).toMatchSnapshot();
 
     return app.start().then((server) => {
-      const snap = inspect(server).replace(
-        /\[Symbol\(asyncId\)\]: \d+/,
-        '<ASYNC_ID>'
-      );
-      expect(snap).toMatchSnapshot();
+      expect(server).toBeInstanceOf(net.Server);
+      expect(server).toBeInstanceOf(http.Server);
+      expect(server.constructor.name).toMatchSnapshot();
       return new Promise((resolve) => {
         setTimeout(() => app.stop(resolve), 500);
       });
@@ -64,10 +63,9 @@ describe('app', () => {
       const app = getApp(options);
 
       return app.start().then((server) => {
-        const snap = inspect(server)
-          .replace(/\[Symbol\(asyncId\)\]: \d+/, '<ASYNC_ID>')
-          .replace(/\d+:\d+\.\d+\.\d+\.\d+:\d+/, '<IFACE_KEY>');
-        expect(snap).toMatchSnapshot();
+        expect(server).toBeInstanceOf(net.Server);
+        expect(server).toBeInstanceOf(http.Server);
+        expect(server.constructor.name).toMatchSnapshot();
         return new Promise((resolve) => {
           setTimeout(() => app.stop(resolve), 500);
         });

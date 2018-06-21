@@ -6,6 +6,8 @@ const { load, prepare, timeFix, toArray } = require('../lib/config');
 
 const { HotModuleReplacementPlugin: HMR } = webpack;
 
+/* eslint-disable no-param-reassign */
+
 describe('config', () => {
   test('timeFix', () => {
     const config = {};
@@ -69,6 +71,10 @@ describe('config', () => {
     const config = {};
     const compiler = webpack(config);
     return load(argv, { compiler }).then((configs) => {
+      configs = configs.map((conf) => {
+        delete conf.optimization;
+        return conf;
+      });
       expect(configs).toMatchSnapshot();
     });
   });
@@ -78,6 +84,10 @@ describe('config', () => {
     const config = [{ entry: 'file-a' }, { entry: 'file-b' }];
     const compiler = webpack(config);
     return load(argv, { compiler }).then((configs) => {
+      configs = configs.map((conf) => {
+        delete conf.optimization;
+        return conf;
+      });
       expect(configs).toMatchSnapshot();
     });
   });

@@ -1,5 +1,6 @@
 const { inspect } = require('util');
 
+const strip = require('strip-ansi');
 const webpack = require('webpack');
 const weblog = require('webpack-log');
 
@@ -72,8 +73,8 @@ describe('middleware', () => {
       expect(app.used[0].hotClient).toBeDefined();
       expect(app.used[0].devMiddleware).toBeDefined();
       expect(koaWebpack).toBeDefined();
-      const value = inspect(koaWebpack).replace(/port: \d+/g, 'port: <PORT>');
-      expect(value).toMatchSnapshot();
+      expect(typeof koaWebpack).toBe('function');
+      expect(Object.keys(koaWebpack)).toMatchSnapshot();
 
       const { hotClient } = koaWebpack;
       expect(hotClient.server.host).toBe('127.0.0.1');
@@ -100,11 +101,12 @@ describe('middleware', () => {
 
     return Promise.all([
       ware.call().catch((error) => {
-        expect(error).toMatchSnapshot();
+        // Node 6 + Jest has a really hard time with ansi color codes
+        expect(strip(error.toString())).toMatchSnapshot();
       }),
       ware.state.then((result) => {
-        expect(result instanceof Error).toBe(true);
-        expect(result).toMatchSnapshot();
+        expect(result).toBeInstanceOf(Error);
+        expect(strip(result.toString())).toMatchSnapshot();
       }),
     ]);
   });

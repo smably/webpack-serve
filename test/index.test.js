@@ -11,7 +11,9 @@ describe('serve', () => {
     const opts = {};
     return serve(argv, opts).then(({ app, options }) => {
       expect(app).toMatchSnapshot();
-      expect(options).toMatchSnapshot();
+      expect(options).toMatchSnapshot({
+        compiler: expect.any(Object),
+      });
 
       return new Promise((resolve) => {
         setTimeout(() => app.stop(resolve), 500);
@@ -25,7 +27,9 @@ describe('serve', () => {
     return serve(argv, opts).then(({ app, on, options }) => {
       const { server } = app;
       expect(app).toMatchSnapshot();
-      expect(options).toMatchSnapshot();
+      expect(options).toMatchSnapshot({
+        compiler: expect.any(Object),
+      });
 
       return new Promise((resolve) => {
         on('build-finished', ({ stats }) => {
