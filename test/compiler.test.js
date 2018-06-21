@@ -3,10 +3,11 @@ const webpack = require('webpack');
 const eventbus = require('../lib/bus');
 const { getCompiler } = require('../lib/compiler');
 
-const bus = eventbus({});
-const compile = (compiler) => new Promise((resolve) => compiler.run(resolve));
+const compile = (compiler) =>
+  new Promise((resolve) => compiler.run(() => setTimeout(resolve, 100)));
 const getConfig = (name) => require(`./fixtures/${name}/webpack.config`);
-const waitForEvent = (name) => new Promise((resolve) => bus.on(name, resolve));
+const waitForEvent = (bus, name) =>
+  new Promise((resolve) => bus.on(name, resolve));
 
 /* eslint-disable no-param-reassign */
 
@@ -18,6 +19,7 @@ const pick = ({ context, name, options }) => {
 
 describe('compiler', () => {
   test('getCompiler', () => {
+    const bus = eventbus({});
     const config = getConfig('basic');
     const result = getCompiler([config], { bus });
     const picked = pick(result);
@@ -25,21 +27,24 @@ describe('compiler', () => {
     expect(picked).toMatchSnapshot();
 
     return Promise.all([
-      waitForEvent('build-started').then((data) => {
+      waitForEvent(bus, 'build-started').then((data) => {
         expect(Object.keys(data)).toMatchSnapshot();
         expect(data.compiler.constructor.name).toMatchSnapshot();
       }),
+      waitForEvent(bus, 'build-finished').then((data) => {
+        const { assets, errors, warnings } = data.stats.toJson();
+        expect({
+          assets,
+          errors: errors.length,
+          warnings: warnings.length,
+        }).toMatchSnapshot();
+      }),
       compile(result),
-      waitForEvent('build-finished').then((data) =>
-        expect(data.stats.toJson()).toMatchSnapshot({
-          builtAt: /\d+/,
-          time: /\d+/,
-        })
-      ),
     ]);
   });
 
   test('getCompiler with existing compiler', () => {
+    const bus = eventbus({});
     const config = getConfig('basic');
     const compiler = webpack(config);
     const result = getCompiler([], { bus, compiler });
@@ -48,21 +53,24 @@ describe('compiler', () => {
     expect(picked).toMatchSnapshot();
 
     return Promise.all([
-      waitForEvent('build-started').then((data) => {
+      waitForEvent(bus, 'build-started').then((data) => {
         expect(Object.keys(data)).toMatchSnapshot();
         expect(data.compiler.constructor.name).toMatchSnapshot();
       }),
+      waitForEvent(bus, 'build-finished').then((data) => {
+        const { assets, errors, warnings } = data.stats.toJson();
+        expect({
+          assets,
+          errors: errors.length,
+          warnings: warnings.length,
+        }).toMatchSnapshot();
+      }),
       compile(result),
-      waitForEvent('build-finished').then((data) =>
-        expect(data.stats.toJson()).toMatchSnapshot({
-          builtAt: /\d+/,
-          time: /\d+/,
-        })
-      ),
     ]);
   });
 
   test('errors', () => {
+    const bus = eventbus({});
     const config = getConfig('error');
     const result = getCompiler([config], { bus });
     const picked = pick(result);
@@ -70,17 +78,18 @@ describe('compiler', () => {
     expect(picked).toMatchSnapshot();
 
     return Promise.all([
-      compile(result),
-      waitForEvent('compiler-error').then((data) => {
+      waitForEvent(bus, 'compiler-error').then((data) => {
         const { errors } = data.json;
         expect(errors.length).toBeGreaterThan(0);
         expect(errors[0]).toMatch(/Module not found/);
       }),
-      waitForEvent('build-finished'),
+      waitForEvent(bus, 'build-finished'),
+      compile(result),
     ]);
   });
 
   test('warnings', () => {
+    const bus = eventbus({});
     const config = getConfig('warning');
     const result = getCompiler([config], { bus });
     const picked = pick(result);
@@ -88,22 +97,20 @@ describe('compiler', () => {
     expect(picked).toMatchSnapshot();
 
     return Promise.all([
-      compile(result),
-      waitForEvent('compiler-warning').then((data) => {
-        data.json.warnings = data.json.warnings.map((warning) =>
+      waitForEvent(bus, 'compiler-warning').then((data) => {
+        let { warnings } = data.json;
+        warnings = warnings.map((warning) =>
           warning.replace(/\s+at(.+)\)\n/g, '')
         );
-        expect(data.json).toMatchSnapshot({
-          builtAt: /\d+/,
-          time: /\d+/,
-          version: /\d+\.\d+\.\d+/,
-        });
+        expect(warnings).toMatchSnapshot();
       }),
-      waitForEvent('build-finished'),
+      waitForEvent(bus, 'build-finished'),
+      compile(result),
     ]);
   });
 
   test('invalid config error', () => {
+    const bus = eventbus({});
     const config = require('./fixtures/invalid.config');
     const fn = () => getCompiler([config], { bus });
 
