@@ -5,6 +5,8 @@ const request = require('supertest');
 
 const serve = require('../lib/index');
 
+jest.setTimeout(10000);
+
 describe('serve', () => {
   test('serve', () => {
     const argv = { logLevel: 'silent' };

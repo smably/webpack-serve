@@ -29,6 +29,8 @@ const run = (flags) => {
   return proc;
 };
 
+jest.setTimeout(10000);
+
 describe('cli', () => {
   test('--help', () => {
     const proc = run(['--help']);
