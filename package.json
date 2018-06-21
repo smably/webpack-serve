@@ -1,6 +1,9 @@
 {
   "name": "webpack-serve",
-  "version": "1.0.4",
+  "version": "2.0.0-beta.1",
+  "publishConfig": {
+    "tag": "beta"
+  },
   "description": "A lean, modern, and flexible webpack development server",
   "license": "MIT",
   "repository": "webpack-contrib/webpack-serve",
@@ -52,7 +55,7 @@
   },
   "dependencies": {
     "@shellscape/koa-static": "^4.0.4",
-    "@webpack-contrib/cli-utils": "^1.0.0",
+    "@webpack-contrib/cli-utils": "^1.0.1",
     "@webpack-contrib/config-loader": "^1.1.1",
     "@webpack-contrib/schema-utils": "^1.0.0-beta.0",
     "chalk": "^2.3.0",
@@ -78,7 +81,7 @@
     "strip-ansi": "^4.0.0",
     "time-fix-plugin": "^2.0.0",
     "update-notifier": "^2.3.0",
-    "url-join": "3.0.0",
+    "url-join": "^4.0.0",
     "v8-compile-cache": "^2.0.0",
     "webpack-log": "^1.1.2"
   },
