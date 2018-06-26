@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`serve bad argv 1`] = `"webpack-serve: The \`argv\` parameter must be an object"`;
+
 exports[`serve basic config 1`] = `
 Object {
   "env": "test",

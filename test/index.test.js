@@ -23,6 +23,14 @@ describe('serve', () => {
     });
   });
 
+  test('bad argv', () => {
+    const argv = [];
+    const opts = {};
+    const fn = () => serve(argv, opts);
+
+    expect(fn).toThrowErrorMatchingSnapshot();
+  });
+
   test('basic config', () => {
     const argv = { logLevel: 'silent' };
     const opts = { config: require('./fixtures/basic/webpack.config') };
