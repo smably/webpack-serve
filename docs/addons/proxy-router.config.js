@@ -30,7 +30,7 @@ module.exports.serve = {
     // this example shows how to properly add middleware _after_ the built-in
     // webpack and content middleware. since middleware must be added at the
     // end of the middleware stack, we have to call the default middlewares
-    // outselves
+    // ourselves
     middleware.webpack().then(() =>
       middleware.content({
         index: 'index.htm',
