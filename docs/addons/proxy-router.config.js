@@ -31,13 +31,13 @@ module.exports.serve = {
     // webpack and content middleware. since middleware must be added at the
     // end of the middleware stack, we have to call the default middlewares
     // ourselves
-    middleware.webpack().then(() =>
+    middleware.webpack().then(() => {
       middleware.content({
         index: 'index.htm',
-      })
-    );
+      });
 
-    // this example assumes router must be added last
-    app.use(router.routes());
+      // this example assumes router must be added last
+      app.use(router.routes());
+    });
   },
 };
