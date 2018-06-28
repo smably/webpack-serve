@@ -50,6 +50,14 @@ describe('config', () => {
     expect(prepare(config)).toMatchSnapshot();
   });
 
+  test('load: bad argv', () => {
+    const argv = undefined; // eslint-disable-line no-undefined
+    const config = { entry: 'file' };
+    return load(argv, { config }).then((configs) => {
+      expect(configs).toMatchSnapshot();
+    });
+  });
+
   test('load: Object', () => {
     const argv = {};
     const config = { entry: 'file' };

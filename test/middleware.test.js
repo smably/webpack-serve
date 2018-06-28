@@ -46,7 +46,7 @@ describe('middleware', () => {
     const content = ['./batman', './superman'];
     const ware = new ContentMiddleware(app, { content });
 
-    ware.call({});
+    ware.call();
 
     return ware.state.then(() => {
       expect(app.used).toMatchSnapshot();

@@ -453,6 +453,21 @@ Array [
 ]
 `;
 
+exports[`config load: bad argv 1`] = `
+Array [
+  Object {
+    "entry": Array [
+      "file",
+    ],
+    "plugins": Array [
+      TimeFixPlugin {
+        "watchOffset": 11000,
+      },
+    ],
+  },
+]
+`;
+
 exports[`config load: not found 1`] = `
 Array [
   Object {

@@ -31,6 +31,14 @@ describe('serve', () => {
     expect(fn).toThrowErrorMatchingSnapshot();
   });
 
+  test('no params', () =>
+    serve().then(
+      ({ app }) =>
+        new Promise((resolve) => {
+          app.stop(resolve);
+        })
+    ));
+
   test('basic config', () => {
     const argv = { logLevel: 'silent' };
     const opts = { config: require('./fixtures/basic/webpack.config') };
