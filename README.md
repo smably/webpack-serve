@@ -395,34 +395,44 @@ serve({ config }).then((server) => {
 
 #### build-started
 
+<!-- spaces before Arguments are a unicode em-space " " -->
+
 Arguments:  
-  [`Compiler`](https://webpack.js.org/api/node/#compiler-instance) _compiler_
+ [`Compiler`](https://webpack.js.org/api/node/#compiler-instance) _compiler_
 
 Emitted when a compiler has started a build.
 
 #### build-finished
 
 Arguments:  
-  [`Stats`](https://webpack.js.org/api/node/#stats-object) _stats_  
-  [`Compiler`](https://webpack.js.org/api/node/#compiler-instance) _compiler_
+ [`Stats`](https://webpack.js.org/api/node/#stats-object) _stats_  
+ [`Compiler`](https://webpack.js.org/api/node/#compiler-instance) _compiler_
 
 Emitted when a compiler has finished a build.
 
 #### compiler-error
 
 Arguments:  
-  [`Stats`](https://webpack.js.org/api/node/#stats-tojson-options-) _json_  
-  [`Compiler`](https://webpack.js.org/api/node/#compiler-instance) _compiler_
+ [`Stats`](https://webpack.js.org/api/node/#stats-tojson-options-) _json_  
+ [`Compiler`](https://webpack.js.org/api/node/#compiler-instance) _compiler_
 
 Emitted when a compiler has encountered and error, or a build has errors.
 
 #### compiler-warning
 
 Arguments:  
-  [`Stats`](https://webpack.js.org/api/node/#stats-tojson-options-) _json_  
-  [`Compiler`](https://webpack.js.org/api/node/#compiler-instance) _compiler_
+ [`Stats`](https://webpack.js.org/api/node/#stats-tojson-options-) _json_  
+ [`Compiler`](https://webpack.js.org/api/node/#compiler-instance) _compiler_
 
 Emitted when a compiler has encountered a warning, or a build has warnings.
+
+#### listening
+
+Arguments:  
+ [`net.Server`](https://nodejs.org/api/net.html#net_class_net_server)  
+ `Object` options
+
+Emitted when the server begins listening for connections.
 
 ## SSL Certificates for HTTPS
 
