@@ -10077,7 +10077,6 @@ Object {
     "compiler": null,
     "content": Array [
       "/batmans/costume",
-      "<PROJECT_ROOT>",
     ],
     "devMiddleware": Object {
       "publicPath": "/",

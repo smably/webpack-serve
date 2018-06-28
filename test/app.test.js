@@ -35,7 +35,7 @@ describe('app', () => {
 
     expect(app).toMatchSnapshot();
 
-    return app.start().then((server) => {
+    return app.start().then(([, , server]) => {
       expect(server).toBeInstanceOf(net.Server);
       expect(server).toBeInstanceOf(http.Server);
       expect(server.constructor.name).toMatchSnapshot();
@@ -62,7 +62,7 @@ describe('app', () => {
       options.compiler = getCompiler(configs, options);
       const app = getApp(options);
 
-      return app.start().then((server) => {
+      return app.start().then(([, , server]) => {
         expect(server).toBeInstanceOf(net.Server);
         expect(server).toBeInstanceOf(http.Server);
         expect(server.constructor.name).toMatchSnapshot();

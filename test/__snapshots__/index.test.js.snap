@@ -21,7 +21,6 @@ Object {
   "compiler": Any<Object>,
   "content": Array [
     "<PROJECT_ROOT>/test/fixtures/basic",
-    "<PROJECT_ROOT>",
   ],
   "devMiddleware": Object {
     "logLevel": "silent",
