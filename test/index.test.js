@@ -68,11 +68,16 @@ describe('serve', () => {
     const argv = { logLevel: 'silent' };
     const opts = {
       add(app, middleware) {
-        middleware.webpack().then(() =>
+        middleware.webpack().then(() => {
           middleware.content({
             index: 'index.htm',
-          })
-        );
+          });
+
+          app.use((ctx) => {
+            // eslint-disable-next-line no-param-reassign
+            ctx.status = 204;
+          });
+        });
       },
       config: require('./fixtures/htm/webpack.config'),
     };
@@ -80,6 +85,8 @@ describe('serve', () => {
     return serve(argv, opts).then(({ app }) => {
       const req = request(app.server);
       return Promise.all([
+        // credit: @frenzzy for this test
+        req.get('/fallthrough').expect(204),
         req.get('/index.htm').expect(200),
         req.get('/output.js').expect(200),
       ]).then(() => new Promise((resolve) => app.stop(resolve)));
