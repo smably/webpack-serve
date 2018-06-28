@@ -68,11 +68,11 @@ describe('serve', () => {
     const argv = { logLevel: 'silent' };
     const opts = {
       add(app, middleware) {
-        middleware.webpack();
-
-        middleware.content({
-          index: 'index.htm',
-        });
+        middleware.webpack().then(() =>
+          middleware.content({
+            index: 'index.htm',
+          })
+        );
       },
       config: require('./fixtures/htm/webpack.config'),
     };
