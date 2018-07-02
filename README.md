@@ -510,7 +510,9 @@ Inclusion in the list does not imply a module is preferred or recommended
 over others._
 
 - [webpack-serve-waitpage](https://github.com/elisherer/webpack-serve-waitpage):
-Displays build progress in the client during complilation.
+Provides build progress in the client during complilation.
+- [webpack-serve-overlay](https://github.com/G-Rath/webpack-serve-overlay):
+Provides an error and warning information overlay in the client.
 
 ## Contributing
 
