@@ -113,7 +113,7 @@ which allows you to define `webpack-serve` options in the following ways:
 - in a `serve.config.js` file which exports a CommonJS module (just like webpack).
 
 It's most common to keep `serve` options in your `webpack.config.js` (see below),
-however, you can utilize any of the options above _in tandem_ with
+however, you can use any of the options above _in tandem_ with
 `webpack.config.js`, and the options from the two sources will be merged. This
 can be useful for setups with multiple configs that share common options for
 `webpack-serve`, but require subtle differences.
@@ -412,7 +412,7 @@ wonderfully with `webpack-serve`.
 
 ## Add-on Features
 
-A core tenant of `webpack-serve` is to stay lean in terms of feature set, and to
+A core tenet of `webpack-serve` is to stay lean in terms of feature set, and to
 empower users with familiar and easily portable patterns to implement the same
 features that those familiar with `webpack-dev-server` have come to rely on. This
 makes the module far easier to maintain, which ultimately benefits the user.
