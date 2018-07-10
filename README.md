@@ -113,7 +113,7 @@ which allows you to define `webpack-serve` options in the following ways:
 - in a `serve.config.js` file which exports a CommonJS module (just like webpack).
 
 It's most common to keep `serve` options in your `webpack.config.js` (see below),
-however, you can use any of the options above _in tandem_ with
+however, you can utilize any of the options above _in tandem_ with
 `webpack.config.js`, and the options from the two sources will be merged. This
 can be useful for setups with multiple configs that share common options for
 `webpack-serve`, but require subtle differences.
